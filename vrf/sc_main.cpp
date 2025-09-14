@@ -12,7 +12,7 @@ int sc_main(int argc, char* argv[]) {
     Verilated::debug(0);
 
     // Randomization reset policy
-    //Verilated::randReset(2);
+    Verilated::randReset(2);
 
     // Before any evaluation, need to know to calculate those signals only used for tracing
     Verilated::traceEverOn(true);
