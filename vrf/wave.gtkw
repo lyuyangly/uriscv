@@ -1,0 +1,50 @@
+[*]
+[*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
+[*] Sun Sep 14 11:36:17 2025
+[*]
+[dumpfile] "logs/wave.vcd"
+[dumpfile_mtime] "Sun Sep 14 11:34:32 2025"
+[dumpfile_size] 534998
+[savefile] "wave.gtkw"
+[timestart] 0
+[size] 1920 1033
+[pos] -27 -24
+*-20.464666 37573000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] uriscv_top.
+[treeopen] uriscv_top.uriscv_top.
+[sst_width] 304
+[signals_width] 206
+[sst_expanded] 1
+[sst_vpaned_height] 306
+@28
+uriscv_top.uriscv_top.clk
+@29
+uriscv_top.uriscv_top.rst_n
+@28
+uriscv_top.uriscv_top.u_riscv_tcm.mem_i_rd_i
+[color] 2
+uriscv_top.uriscv_top.u_uriscv_core.state_q[2:0]
+[color] 7
+uriscv_top.uriscv_top.u_riscv_tcm.mem_i_accept_o
+[color] 7
+uriscv_top.uriscv_top.u_riscv_tcm.mem_i_valid_o
+@22
+[color] 7
+uriscv_top.uriscv_top.u_riscv_tcm.mem_i_pc_i[31:0]
+[color] 7
+uriscv_top.uriscv_top.u_riscv_tcm.mem_i_inst_o[31:0]
+@28
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_rd_i
+@22
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_wr_i[3:0]
+@28
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_accept_o
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_ack_o
+@22
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_addr_i[31:0]
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_data_wr_i[31:0]
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_data_rd_o[31:0]
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_req_tag_i[10:0]
+uriscv_top.uriscv_top.u_riscv_tcm.mem_d_resp_tag_o[10:0]
+[pattern_trace] 1
+[pattern_trace] 0
