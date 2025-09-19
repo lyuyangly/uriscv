@@ -7,3 +7,4 @@
 ./uriscv_core/uriscv_core.sv
 ./uriscv_core/uriscv_tcm.sv
 ./uriscv_core/uriscv_top.sv
+./uriscv_core/uriscv_ahb_top.sv
