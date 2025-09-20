@@ -1,7 +1,7 @@
 # Makefile for SystemC
 
 export PRJ_PATH	= $(shell pwd)/..
-export DESIGN	= uriscv_top
+export DESIGN	= top
 
 all:
 	@echo "Verification based on verilator and SystemC"
@@ -17,7 +17,7 @@ run:
 	./obj_dir/V$(DESIGN) +trace
 
 wave:
-	gtkwave ./logs/wave.vcd wave.gtkw &
+	gtkwave ./logs/wave.vcd &
 
 clean:
 	@rm -rf obj_dir logs

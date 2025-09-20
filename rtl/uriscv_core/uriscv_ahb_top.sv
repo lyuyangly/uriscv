@@ -10,7 +10,7 @@ module uriscv_ahb_top (
     output  logic   [31:0]      hwdata,
     input   logic   [31:0]      hrdata,
     input   logic               hready_in,
-    input   logic               hresp
+    input   logic   [1:0]       hresp
 );
 
 logic           mem_out_rd_w;
@@ -35,7 +35,7 @@ uriscv_top u_riscv_top (
     .mem_out_data_wr_o      (hwdata             ),
     .mem_out_req_tag_o      (),
     .mem_out_resp_accept_o  (),
-    .mem_out_accept_i       (1'b1               ),
+    .mem_out_accept_i       (mem_out_ack_w      ),
     .mem_out_ack_i          (mem_out_ack_w      ),
     .mem_out_resp_tag_i     (11'h0              )
 );
@@ -44,9 +44,9 @@ always_ff @(posedge hclk, negedge hreset_n)
 begin
     if (~hreset_n)
         htrans_in_process <= 1'b0;
-    else if (mem_out_rd_w | (|mem_out_wr_w) & hready_in & htrans_in_process)
+    else if ((mem_out_rd_w | (|mem_out_wr_w)) & hready_in & htrans_in_process)
         htrans_in_process <= 1'b0;
-    else if (mem_out_rd_w | (|mem_out_wr_w) & hready_in & (~htrans_in_process))
+    else if ((mem_out_rd_w | (|mem_out_wr_w)) & hready_in & (~htrans_in_process))
         htrans_in_process <= 1'b1;
 end
 
@@ -67,7 +67,7 @@ end
 assign htrans       = {(mem_out_rd_w | (|mem_out_wr_w)) & (~htrans_in_process), 1'b0};
 assign hburst       = 3'h0;
 assign hwrite       = |mem_out_wr_w;
-assign mem_out_ack_w = htrans_in_process & hready_in & (hresp == 1'b0);
+assign mem_out_ack_w = htrans_in_process & hready_in & (hresp == 2'h0);
 
 endmodule
 

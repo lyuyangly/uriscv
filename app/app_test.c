@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern int xmodemReceive(unsigned char*, int);
+#define AHB_RAM_BASE    0x80000000
+#define AHB_PIO_BASE    0xF0000000
 
 typedef void (*p_func)(void);
 
@@ -15,19 +16,19 @@ void delay(unsigned int t)
 
 int main(void)
 {
-    //// UART 115200 8N1
-    //uart_init(6944);
-    //uart_puts("CPU Boot ...\r\n");
-    //uart_puts("Receive Program by Xmodem in 10s ...\r\n");
-    //delay(10000);
-
-    //st = xmodemReceive((unsigned char *)(LOAD_BASE), 8192);
-
     volatile uint32_t x = 0;
-    volatile uint8_t  num[10];
+    volatile uint32_t num[10];
+    uint32_t len = sizeof(num)/sizeof(num[0]);
 
-    for (x = 0; x < 10; x++) {
+    for (x = 0; x < len; x++) {
         num[x] = 0x80 + x;
+        *((uint32_t *)(AHB_RAM_BASE + x*4)) = 0x80000000 + x;
+        *((uint32_t *)(AHB_PIO_BASE + x*4)) = 0xdead8000 + x;
+    }
+
+    for (x = 0; x < len; x++) {
+        num[x] = *((uint32_t *)(AHB_RAM_BASE + x*4));
+        *((uint32_t *)(AHB_PIO_BASE + x*4)) = 0xbeef8000 + x;
     }
 
 	return 0;

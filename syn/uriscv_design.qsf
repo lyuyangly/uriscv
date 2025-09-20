@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
-set_global_assignment -name TOP_LEVEL_ENTITY uriscv_top
+set_global_assignment -name TOP_LEVEL_ENTITY uriscv_ahb_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:54:53  SEPTEMBER 14, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.0.0 Standard Edition"
@@ -55,9 +55,6 @@ set_global_assignment -name ECO_REGENERATE_REPORT ON
 #============================================================
 # CLOCK
 #============================================================
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK3
 set_location_assignment PIN_V11 -to FPGA_CLK1
 set_location_assignment PIN_Y13 -to FPGA_CLK2
 set_location_assignment PIN_E11 -to FPGA_CLK3
@@ -65,41 +62,6 @@ set_location_assignment PIN_E11 -to FPGA_CLK3
 #============================================================
 # HDMI
 #============================================================
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SCL
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SDA
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2S
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_LRCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_MCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_SCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_CLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_DE
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[17]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[18]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[19]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[21]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[22]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[23]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_HS
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_INT
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_VS
 set_location_assignment PIN_U10 -to HDMI_I2C_SCL
 set_location_assignment PIN_AA4 -to HDMI_I2C_SDA
 set_location_assignment PIN_T13 -to HDMI_I2S
@@ -139,6 +101,93 @@ set_location_assignment PIN_V13 -to HDMI_TX_VS
 #============================================================
 # HPS
 #============================================================
+
+#============================================================
+# KEY
+#============================================================
+set_location_assignment PIN_AH17 -to KEY[0]
+set_location_assignment PIN_AH16 -to KEY[1]
+
+#============================================================
+# LED
+#============================================================
+set_location_assignment PIN_W15 -to LED[0]
+set_location_assignment PIN_AA24 -to LED[1]
+set_location_assignment PIN_V16 -to LED[2]
+set_location_assignment PIN_V15 -to LED[3]
+set_location_assignment PIN_AF26 -to LED[4]
+set_location_assignment PIN_AE26 -to LED[5]
+set_location_assignment PIN_Y16 -to LED[6]
+set_location_assignment PIN_AA23 -to LED[7]
+
+#============================================================
+# SW
+#============================================================
+set_location_assignment PIN_Y24 -to SW[0]
+set_location_assignment PIN_W24 -to SW[1]
+set_location_assignment PIN_W21 -to SW[2]
+set_location_assignment PIN_W20 -to SW[3]
+
+
+#============================================================
+# DESIGN
+#============================================================
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_defs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_lsu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_csr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_branch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_muldiv.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_core.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_tcm.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_ahb_top.sv
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SCL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SDA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2S
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_LRCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_MCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_DE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[16]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[17]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[18]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[19]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[20]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[21]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[22]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[23]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_HS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_INT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_VS
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_CONV_USB_N
 set_instance_assignment -name IO_STANDARD "SSTL-15 CLASS I" -to HPS_DDR3_ADDR[0]
 set_instance_assignment -name IO_STANDARD "SSTL-15 CLASS I" -to HPS_DDR3_ADDR[1]
@@ -259,18 +308,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DATA[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DIR
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_NXT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_STP
-
-#============================================================
-# KEY
-#============================================================
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
-set_location_assignment PIN_AH17 -to KEY[0]
-set_location_assignment PIN_AH16 -to KEY[1]
-
-#============================================================
-# LED
-#============================================================
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[2]
@@ -279,27 +318,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[7]
-set_location_assignment PIN_W15 -to LED[0]
-set_location_assignment PIN_AA24 -to LED[1]
-set_location_assignment PIN_V16 -to LED[2]
-set_location_assignment PIN_V15 -to LED[3]
-set_location_assignment PIN_AF26 -to LED[4]
-set_location_assignment PIN_AE26 -to LED[5]
-set_location_assignment PIN_Y16 -to LED[6]
-set_location_assignment PIN_AA23 -to LED[7]
-
-#============================================================
-# SW
-#============================================================
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[3]
-set_location_assignment PIN_Y24 -to SW[0]
-set_location_assignment PIN_W24 -to SW[1]
-set_location_assignment PIN_W21 -to SW[2]
-set_location_assignment PIN_W20 -to SW[3]
-
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0]
 set_instance_assignment -name OUTPUT_TERMINATION "SERIES 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0]
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[1]
@@ -484,24 +506,4 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
-
-#============================================================
-# DESIGN
-#============================================================
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_defs.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_alu.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_lsu.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_csr.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_branch.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_muldiv.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_core.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_tcm.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/uriscv_core/uriscv_top.sv
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-
-
