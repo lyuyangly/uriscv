@@ -1,0 +1,13 @@
+../rtl/uriscv_core/uriscv_defs.sv
+../rtl/uriscv_core/uriscv_alu.sv
+../rtl/uriscv_core/uriscv_lsu.sv
+../rtl/uriscv_core/uriscv_csr.sv
+../rtl/uriscv_core/uriscv_muldiv.sv
+../rtl/uriscv_core/uriscv_branch.sv
+../rtl/uriscv_core/uriscv_core.sv
+../rtl/uriscv_core/uriscv_tcm.sv
+../rtl/uriscv_core/uriscv_top.sv
+../rtl/uriscv_core/uriscv_ahb_top.sv
+../rtl/ip/ahb_ram.v
+../rtl/ip/ahb_pio.v
+../rtl/top/top.v
