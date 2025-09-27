@@ -7,7 +7,7 @@
 
 TARGET = app_test
 
-CROSS_COMPILE = riscv-nuclei-elf-
+CROSS_COMPILE = riscv64-unknown-elf-
 
 SRC_DIR = .
 OBJ_DIR = obj
