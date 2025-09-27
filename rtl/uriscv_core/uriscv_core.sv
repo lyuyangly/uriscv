@@ -547,22 +547,22 @@ end
 always_ff @(posedge clk, negedge rst_n)
 begin
     if (~rst_n)
-        pc_q        <= RST_VECTOR;
+        pc_q <= RST_VECTOR;
     else if (state_q == STATE_RESET)
-        pc_q        <= RST_VECTOR;
+        pc_q <= RST_VECTOR;
     else if (opcode_valid_w)
     begin
         // Exception / Break / ecall (branch to ISR)
         if (exception_w || inst_ebreak_w || inst_ecall_w)
-            pc_q    <= exception_target_w;
+            pc_q <= exception_target_w;
         // MRET (branch to EPC)
         else if (inst_mret_w)
-            pc_q    <= csr_mepc_w;
+            pc_q <= csr_mepc_w;
         // Branch
         else if (branch_w)
-            pc_q    <= branch_target_w;
+            pc_q <= branch_target_w;
         else
-            pc_q    <= pc_q + 'd4;
+            pc_q <= pc_q + 32'h4;
     end
 end
 
@@ -595,24 +595,24 @@ always_ff @(posedge clk, negedge rst_n)
 begin
     if (~rst_n)
     begin
-        mem_addr_q  <= 32'h00000000;
-        mem_data_q  <= 32'h00000000;
-        mem_wr_q    <= 4'b0000;
-        mem_rd_q    <= 1'b0;
+        mem_addr_q <= 32'h00000000;
+        mem_data_q <= 32'h00000000;
+        mem_wr_q   <= 4'b0000;
+        mem_rd_q   <= 1'b0;
     end
     // Valid instruction to execute
     else if (opcode_valid_w && !exception_w)
     begin
-        mem_addr_q  <= {mem_addr_w[31:2], 2'b0};
-        mem_data_q  <= mem_data_w;
-        mem_wr_q    <= mem_wr_w;
-        mem_rd_q    <= mem_rd_w;
+        mem_addr_q <= {mem_addr_w[31:2], 2'b0};
+        mem_data_q <= mem_data_w;
+        mem_wr_q   <= mem_wr_w;
+        mem_rd_q   <= mem_rd_w;
     end
     // No instruction, clear memory request
     else if (mem_d_accept_i)
     begin
-        mem_wr_q    <= 4'b0000;
-        mem_rd_q    <= 1'b0;
+        mem_wr_q   <= 4'b0000;
+        mem_rd_q   <= 1'b0;
     end
 end
 
