@@ -1,7 +1,6 @@
 module uriscv_core #(
     parameter   SUPPORT_BRAM_REGFILE = 1,
-    parameter   RST_VECTOR           = 32'h00000000,
-    parameter   ISR_VECTOR           = 32'h00000010
+    parameter   RST_VECTOR           = 32'h00000000
 ) (
     input           clk,
     input           rst_n,
@@ -647,8 +646,6 @@ assign mem_d_rd_o      = mem_rd_q;
 uriscv_csr u_csr (
     .clk                    (clk                    ),
     .rst_n                  (rst_n                  ),
-    // Reset vector (only used if SUPPORT_MTVEC=0)
-    .isr_vector_i           (RST_VECTOR + ISR_VECTOR),
     // HartID
     .cpu_id_i               (32'h0                  ),
     // External interrupt

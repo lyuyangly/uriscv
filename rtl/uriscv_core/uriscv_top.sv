@@ -35,8 +35,7 @@ wire                mem_d_ack_w;
 
 uriscv_core #(
     .SUPPORT_BRAM_REGFILE (1),
-    .RST_VECTOR           (32'h00000000),
-    .ISR_VECTOR           (32'h00000010)
+    .RST_VECTOR           (32'h00000000)
 ) u_uriscv_core (
     .clk                    (clk                    ),
     .rst_n                  (rst_n                  ),

@@ -2,7 +2,6 @@ module uriscv_csr (
     input               clk,
     input               rst_n,
     input               intr_i,
-    input   [31:0]      isr_vector_i,
     input   [31:0]      cpu_id_i,
     input               valid_i,
     input   [31:0]      pc_i,
